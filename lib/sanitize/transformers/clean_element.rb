@@ -31,10 +31,10 @@ class Sanitize; module Transformers
         # Elements like br, div, p, etc. need to be replaced with whitespace in
         # order to preserve readability.
         if @whitespace_elements.include?(name)
-          node.add_previous_sibling(Nokogiri::XML::Text.new(' ', node.document))
+          node.add_previous_sibling(Nokogiri::XML::Text.new("\n", node.document))
 
           unless node.children.empty?
-            node.add_next_sibling(Nokogiri::XML::Text.new(' ', node.document))
+            node.add_next_sibling(Nokogiri::XML::Text.new("\n", node.document))
           end
         end
 
